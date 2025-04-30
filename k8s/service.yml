@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: online-shop-svc
+  namespace: online-shop-ns  
+spec:
+  selector:
+    app: online-shop
+  ports:
+    - protocol: TCP
+      port: 80                 # before ingress nginx 81 port number  [ Host Port ]
+      targetPort: 5173           # before ingress nginx 5173 port number  [ Container port ] 

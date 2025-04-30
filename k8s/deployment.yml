@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: online-shop-deployment       # Pod's name
+  namespace: online-shop-ns
+  labels:
+    app: online-shop
+spec:
+  replicas: 2                        # it'll create 2 pods
+  selector:
+    matchLabels:
+      app: online-shop
+  template:
+    metadata:
+      labels:
+        app: online-shop
+    spec:
+      containers:
+      - name: online-shop
+        image: niki0303/online-shop:latest
+        ports:
+        - containerPort: 5173
+        resources:
+          requests:
+            cpu: 100m
+            memory: 256Mi
+          limits:
+            cpu: 200m
+            memory: 512Mi     
