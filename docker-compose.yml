@@ -1,7 +1,7 @@
 services:
   online_shop:
     image: niki0303/online_shop
-    container_name: online_shop
+    container_name: online_shop_app
     ports:
       - "3000:5173"
 
