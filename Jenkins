@@ -1,0 +1,48 @@
+@Library("Shared") _
+pipeline{
+    
+    agent { label "agent" } 
+    
+    stages{
+        stage("Hello"){
+            steps{
+                script{
+                    demo()
+                }
+            }
+        }
+        stage("Code Clone"){
+            steps{
+                script{
+                    code_clone("https://github.com/leuvanikita/online_shop.git", "devops")
+                }
+            }
+        }
+        stage("Build"){
+            steps{
+                script{
+                    docker_build("online_shop", "latest", "niki0303")
+                }
+            }
+        }
+        stage("Test"){
+            steps{
+                echo "code Test"
+            }
+        }
+        stage("Push to DockerHub"){
+            steps{
+               script{
+                   docker_push("niki0303", "online_shop", "latest")
+               }
+            }
+        }
+        stage("Deploy"){
+            steps{
+                script{
+                    docker_compose()
+                }
+            }
+        }
+    }
+}
