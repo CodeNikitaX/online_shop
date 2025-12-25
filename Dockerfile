@@ -23,7 +23,7 @@ COPY . .
 
 #Run build npm
 
-Run npm run build
+RUN npm run build
 
 #------------------Stagge 2--------------------------
 
